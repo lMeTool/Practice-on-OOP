@@ -1,25 +1,29 @@
 class Customer:
+
     def __init__(self, name: str):
         self.name = name
         # Добавьте сюда приватный атрибут "скидка"
         # со значением по умолчанию 10.
-        ...
-
+        self.__discount = 10
     # Метод set_discount() принимает на вход
     # новое значение для приватного атрибута "скидка".
     # Если new_value превышает 80 -
     # новое значение скидки должно стать 80.
     # Метод не должен ничего возвращать.
     def set_discount(self, new_value: int):
-        ...
+        if new_value <= 80:
+            self._Customer__discount = new_value
+        else:
+            self._Customer__discount = 80
 
     # Метод get_price() получает на вход исходную стоимость товара
     # и должен вернуть новую цену товара с учётом
     # скидки покупателя.
     # Возвращаемое значение округлите до двух знаков после запятой.
     def get_price(self, price: int) -> float:
-        ...
-        return ...
+        total_price = price * (1-self._Customer__discount/100)
+
+        return round(total_price,2)
 
 
 # Проверим работу программы.
